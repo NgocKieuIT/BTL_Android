@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/vatlieuLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        tools:ignore="MissingConstraints">
+
+        <!-- Ảnh giữ chỗ cho vật liệu -->
+        <ImageView
+            android:id="@+id/vatlieuImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_launcher_background"
+            android:contentDescription="Ảnh vật liệu"
+            android:layout_marginEnd="8dp" />
+        <!-- Loại vật liệu và khối lượng -->
+        <LinearLayout
+            android:id="@+id/vatlieuInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <Spinner
+                android:id="@+id/loai"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:entries="@array/material_types"
+                android:layout_weight="1.5"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/khoiluong"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Khối lượng"
+                android:inputType="numberDecimal"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:layout_marginEnd="8dp" />
+        </LinearLayout>
+
+        <!-- Nút xóa vật liệu -->
+        <ImageView
+            android:id="@+id/imgxoa"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_delete"
+            android:contentDescription="Nút xóa vật liệu"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

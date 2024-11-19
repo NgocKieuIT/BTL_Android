@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "424403270016",
+    "project_id": "btlg05-5cdf9",
+    "storage_bucket": "btlg05-5cdf9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424403270016:android:c90b0f274a5910015d2965",
+        "android_client_info": {
+          "package_name": "com.example.btlg05"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxcD8Z2fBY5D2C_W39dA5b6DdOLivPzpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

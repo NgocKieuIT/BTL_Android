@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DangnhapActivity">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/anh"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Welcome to WeCycle !"
+                android:textColor="@color/key"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="30dp"
+            android:textSize="14dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="#F5F5F5"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textSize="14dp"
+            android:background="#F5F5F5"
+            android:layout_below="@+id/etEmail"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Đăng nhập"
+            android:background="@drawable/custombutton"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textSize="12dp"
+            android:backgroundTint="@color/key"
+            android:layout_below="@+id/etPassword"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:layout_below="@+id/btnLogin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bạn chưa có tài khoản?"
+                android:textSize="14dp"/>
+
+            <TextView
+                android:id="@+id/tvDangKyLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Đăng ký"
+                android:textSize="16dp"
+                android:textColor="@color/key"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

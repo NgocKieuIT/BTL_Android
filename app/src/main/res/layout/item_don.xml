@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="@android:color/white"
+    android:layout_marginTop="8dp">
+
+    <!-- Order Information -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="2dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã đơn: "
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/mahang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="2dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Điểm thu: "
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/tendt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- View Details Button -->
+    <Button
+        android:id="@+id/btnChiTiet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chi tiết"
+        android:backgroundTint="#4CAF50"
+        android:textSize="11sp"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

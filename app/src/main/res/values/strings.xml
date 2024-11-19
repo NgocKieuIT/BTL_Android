@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">BTLG05</string>
+    <string-array name="material_types">
+        <item>Giấy</item>
+        <item>Nhựa</item>
+        <item>Kim loại</item>
+        <item>Thủy tinh</item>
+    </string-array>
+
+    <!-- Mảng điểm thu gom (collection_points) -->
+    <string-array name="collection_points">
+        <item>Điểm thu Kim Anh</item>
+        <item>Điểm thu Nam Phương</item>
+        <item>Điểm thu Minh Ánh</item>
+    </string-array>
+
+    <!-- Mảng phương thức gửi đồ (delivery_methods) -->
+    <string-array name="delivery_methods">
+        <item>Tự vận chuyển</item>
+        <item>Shiper lấy hàng</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>
