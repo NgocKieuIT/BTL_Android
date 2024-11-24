@@ -1,6 +1,5 @@
-package com.example.btlg05;
+package com.example.btlg05.User;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,12 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.btlg05.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Transaction;
-
-import java.util.List;
 
 public class DangkyActivity extends AppCompatActivity {
     Button dangky, dangnhap;
@@ -43,7 +40,7 @@ public class DangkyActivity extends AppCompatActivity {
         dangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),DangnhapActivity.class);
+                Intent intent=new Intent(getApplicationContext(), DangnhapActivity.class);
                 startActivity(intent);
             }
         });

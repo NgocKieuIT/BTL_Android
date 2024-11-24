@@ -1,4 +1,4 @@
-package com.example.btlg05;
+package com.example.btlg05.User;
 
 public class User {
     public String username;

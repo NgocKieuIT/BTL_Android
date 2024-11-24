@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LichSuFragment">
+    tools:context=".DonHang.LichSuFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,6 +25,7 @@
             android:textSize="10sp"
             android:layout_marginLeft="2px"
             android:text="Đang xử lý"
+            android:textColor="@color/black"
             android:backgroundTint="#E79220" />
 
         <Button

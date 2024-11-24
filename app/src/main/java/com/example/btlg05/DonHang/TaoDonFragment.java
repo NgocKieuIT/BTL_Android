@@ -1,13 +1,12 @@
-package com.example.btlg05;
+package com.example.btlg05.DonHang;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,10 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.example.btlg05.R;
+import com.example.btlg05.VatLieu.VatLieuAdapter;
+import com.example.btlg05.VatLieu.vatlieu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,8 +83,9 @@ public class TaoDonFragment extends Fragment {
                  String laysdt=SDT.getText().toString();
                  String layngay=ngayGui.getText().toString();
 
-                 String layusername=getArguments().getString("username");
-                 String layemailng=getArguments().getString("emailng");
+                 SharedPreferences sharedPreferences = requireContext().getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
+                 String layusername = sharedPreferences.getString("USERNAME", "Unknown");
+                 String layemailng = sharedPreferences.getString("EMAIL", "Unknown");
 
                  ArrayList<vatlieu>danhsach=new ArrayList<>();
 

@@ -1,13 +1,11 @@
-package com.example.btlg05;
-
-import android.widget.TextView;
+package com.example.btlg05.DonHang;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class DonHang implements Serializable {
     private String id;
-    private List<vatlieu> vatlieu;
+    private List<com.example.btlg05.VatLieu.vatlieu> vatlieu;
     private String tendiemthu;
     private String emailng;
     private String diaching;
@@ -22,7 +20,7 @@ public class DonHang implements Serializable {
     public DonHang() {
     }
 
-    public DonHang(String id, List<com.example.btlg05.vatlieu> vatlieu, String tendiemthu, String emailng, String diaching, String sdtng, String phuongthuc, String ngaygui, String stk, String tennganhang, String trangthai, float sotien) {
+    public DonHang(String id, List<com.example.btlg05.VatLieu.vatlieu> vatlieu, String tendiemthu, String emailng, String diaching, String sdtng, String phuongthuc, String ngaygui, String stk, String tennganhang, String trangthai, float sotien) {
         this.id = id;
         this.vatlieu = vatlieu;
         this.tendiemthu = tendiemthu;
@@ -45,11 +43,11 @@ public class DonHang implements Serializable {
         this.id = id;
     }
 
-    public List<com.example.btlg05.vatlieu> getVatlieu() {
+    public List<com.example.btlg05.VatLieu.vatlieu> getVatlieu() {
         return vatlieu;
     }
 
-    public void setVatlieu(List<com.example.btlg05.vatlieu> vatlieu) {
+    public void setVatlieu(List<com.example.btlg05.VatLieu.vatlieu> vatlieu) {
         this.vatlieu = vatlieu;
     }
 

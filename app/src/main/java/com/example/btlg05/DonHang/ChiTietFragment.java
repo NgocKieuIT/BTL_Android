@@ -1,9 +1,9 @@
-package com.example.btlg05;
+package com.example.btlg05.DonHang;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
@@ -14,10 +14,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.btlg05.DonHang.DonHang;
+import com.example.btlg05.DonHang.LichSuFragment;
+import com.example.btlg05.R;
+import com.example.btlg05.VatLieu.VatlieuKLAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
 
 public class ChiTietFragment extends Fragment {
     TextView tvemailng,tvdChing,tvsdtng,tvdiemthu,tvpthuc,tvstk,tvtennh,tvngaygui,tvtrangthai, tvmadon;
@@ -64,7 +66,21 @@ public class ChiTietFragment extends Fragment {
         // Kiểm tra trạng thái đơn hàng và hiển thị/ẩn nút "Hủy"
         if ("Đang xử lý".equals(donHang.getTrangthai())) {
             huy.setVisibility(View.VISIBLE);
-            huy.setOnClickListener(v -> huyDonHang(donHang));
+            huy.setOnClickListener(v -> {
+                // Tạo một hộp thoại xác nhận
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Xác nhận hủy")
+                        .setMessage("Bạn có chắc chắn muốn hủy đơn hàng này?")
+                        .setPositiveButton("Có", (dialog, which) -> {
+                            // Nếu người dùng chọn "Có", gọi hàm hủy đơn hàng
+                            huyDonHang(donHang);
+                        })
+                        .setNegativeButton("Không", (dialog, which) -> {
+                            // Nếu người dùng chọn "Không", đóng hộp thoại mà không làm gì
+                            dialog.dismiss();
+                        })
+                        .show();
+            });
         } else {
             huy.setVisibility(View.GONE);
         }

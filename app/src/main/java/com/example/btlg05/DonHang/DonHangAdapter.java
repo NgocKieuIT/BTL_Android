@@ -1,4 +1,4 @@
-package com.example.btlg05;
+package com.example.btlg05.DonHang;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,7 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
+
+import com.example.btlg05.R;
 
 import java.util.List;
 
