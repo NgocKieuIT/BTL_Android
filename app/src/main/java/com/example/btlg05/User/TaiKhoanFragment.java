@@ -124,8 +124,8 @@ public class TaiKhoanFragment extends Fragment {
                                 Toast.makeText(getContext(), "Xóa dữ liệu tài khoản thành công!", Toast.LENGTH_SHORT).show();
                                 FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                 if (currentUser != null) {
-                                    currentUser.delete().addOnCompleteListener(task -> {
-                                        if (task.isSuccessful()) {
+                                    currentUser.delete().addOnCompleteListener(task_new -> {
+                                        if (task_new.isSuccessful()) {
                                             Toast.makeText(getContext(), "Xóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
                                         } else {
                                             Toast.makeText(getContext(), "Xóa tài khoản thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

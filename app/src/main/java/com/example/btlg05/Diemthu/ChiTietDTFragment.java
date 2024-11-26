@@ -24,6 +24,7 @@ import com.example.btlg05.DonHang.DonHang;
 import com.example.btlg05.DonHang.LichSuFragment;
 import com.example.btlg05.DonHang.TaoDonFragment;
 import com.example.btlg05.Helpers.ImageManager;
+import com.example.btlg05.Map.MapsFragment;
 import com.example.btlg05.R;
 import com.example.btlg05.User.DangkyActivity;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +39,9 @@ public class ChiTietDTFragment extends Fragment {
     private ImageButton imageBack, imagetaodon;
     private Button buttonEdit, buttonDelete;
     private DiemThu diemThu;
+
+    private String currentLat ="";
+    private String locationName ="";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,8 @@ public class ChiTietDTFragment extends Fragment {
         imagetaodon=view.findViewById(R.id.btnoder);
         buttonDelete=view.findViewById(R.id.btn_delete);
         buttonEdit = view.findViewById(R.id.btn_edit);
+        TextView textView = view.findViewById(R.id.tv);
+        textView.setOnClickListener(v -> openMapFragment());
 
         //Kiểm tra có phải admin không
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
@@ -141,5 +147,18 @@ public class ChiTietDTFragment extends Fragment {
         });
 
         return view;
+    }
+    private void openMapFragment() {
+        currentLat = textViewAddress.getText().toString();
+        locationName = textViewName.getText().toString();
+        MapsFragment mapsFragment = MapsFragment.newInstance(
+                currentLat, locationName
+        );
+
+        // Chuyển sang MapsFragment
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, mapsFragment); // R.id.fragment_container là container chứa fragment
+        transaction.addToBackStack(null);  // Thêm vào back stack để có thể quay lại fragment trước
+        transaction.commit();
     }
 }
