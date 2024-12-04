@@ -53,7 +53,7 @@ public class TaiKhoanFragment extends Fragment {
         tvuser.setText(username);
         tvemail.setText(emailng);
         //Kiểm tra có phải admin không
-        if(emailng != null && emailng.equals("ngockieu1692003@gmail.com")){
+        if(emailng != null && emailng.equals("okeryfu@gmail.com")){
             themdiemthu.setVisibility(View.VISIBLE);
             dangbai.setVisibility(View.VISIBLE);
         }
