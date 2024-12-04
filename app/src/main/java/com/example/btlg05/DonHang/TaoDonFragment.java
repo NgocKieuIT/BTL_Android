@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -19,6 +22,11 @@ import android.widget.Spinner;
 import com.example.btlg05.R;
 import com.example.btlg05.VatLieu.VatLieuAdapter;
 import com.example.btlg05.VatLieu.vatlieu;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +39,8 @@ public class TaoDonFragment extends Fragment {
     private List<vatlieu> listvatlieu;
     Spinner diemThu, phuongThuc;
     EditText diaChi, SDT,ngayGui;
-
+    private DatabaseReference data;
+    private ArrayList<String> listDiemThu;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,11 +54,33 @@ public class TaoDonFragment extends Fragment {
          SDT=view.findViewById(R.id.sdtuser);
          ngayGui=view.findViewById(R.id.ngaygui);
 
-
+        listDiemThu = new ArrayList<>();
         listvatlieu = new ArrayList<>();
         adapter = new VatLieuAdapter(getActivity(), listvatlieu);
         listView.setAdapter(adapter);
+        //Lấy điểm thu từ trong fire base
+        data = FirebaseDatabase.getInstance().getReference("DiemThu");
 
+        data.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listDiemThu.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    String diemThuName = dataSnapshot.child("ten").getValue(String.class);
+                    if(diemThuName != null){
+                        listDiemThu.add(diemThuName);
+                    }
+                }
+                ArrayAdapter  diemthuAdapter = new ArrayAdapter<>(requireContext(),
+                        androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,listDiemThu);
+                diemThu.setAdapter(diemthuAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         buttonAdd.setOnClickListener(v -> {
             vatlieu newvatlieu = new vatlieu();
             listvatlieu.add(newvatlieu);

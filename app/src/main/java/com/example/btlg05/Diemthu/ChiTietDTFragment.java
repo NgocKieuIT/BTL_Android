@@ -66,7 +66,7 @@ public class ChiTietDTFragment extends Fragment {
         //Kiểm tra có phải admin không
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         String layemailng = sharedPreferences.getString("EMAIL", "Unknown");
-        if(layemailng != null && layemailng.equals("ngockieu1692003@gmail.com")){
+        if(layemailng != null && layemailng.equals("okeryfu@gmail.com")){
             buttonEdit.setVisibility(View.VISIBLE);
             buttonDelete.setVisibility(View.VISIBLE);
         }
