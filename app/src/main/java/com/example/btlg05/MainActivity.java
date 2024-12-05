@@ -5,7 +5,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.btlg05.Diemthu.DiemThuFragment;
 import com.example.btlg05.DonHang.LichSuFragment;
@@ -14,13 +21,31 @@ import com.example.btlg05.Post.HomeFragment;
 import com.example.btlg05.User.TaiKhoanFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
+    //sensor
+    private SensorManager sensorManager;
+    private Sensor lightSensor;
+    private BottomNavigationView bottomNavigationView;
+
+    private static final float LIGHT_THRESHOLD = 5000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //sensor
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        if (sensorManager != null) {
+            lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+            // Đăng ký lắng nghe sự kiện của cảm biến ánh sáng
+            if (lightSensor != null) {
+                sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_UI);
+            }
+        }
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         String username = getIntent().getStringExtra("username");
         String email = getIntent().getStringExtra("emailng");
 
@@ -62,5 +87,31 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             bottomNavigationView.setSelectedItemId(R.id.nav_home); // Mặc định là Home
         }
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        // Kiểm tra nếu sự kiện là từ cảm biến ánh sáng
+        if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
+            float lightLevel = event.values[0];  // Giá trị ánh sáng
+
+            // Kiểm tra nếu mức độ ánh sáng vượt quá ngưỡng
+            if (lightLevel > LIGHT_THRESHOLD) {
+                bottomNavigationView.setBackgroundColor(Color.parseColor("#ffe14a"));
+                ColorStateList textColor = ColorStateList.valueOf(Color.parseColor("#05FF05"));
+                bottomNavigationView.setItemIconTintList(textColor);
+                bottomNavigationView.setItemTextColor(textColor);
+            } else {
+                bottomNavigationView.setBackgroundColor(Color.WHITE);
+                ColorStateList textColor = ColorStateList.valueOf(Color.parseColor("#248B46"));
+                bottomNavigationView.setItemIconTintList(textColor);
+                bottomNavigationView.setItemTextColor(textColor);
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
     }
 }
